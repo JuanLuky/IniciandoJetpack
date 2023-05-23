@@ -18,6 +18,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -56,7 +58,9 @@ fun MyApp(
 @Composable
 private fun Greeting(name: String) {
 
-    var expanded = false
+    var expanded = remember {
+        mutableStateOf(false)
+    }
 
     Surface(
         color = MaterialTheme.colorScheme.secondary,
@@ -80,10 +84,10 @@ private fun Greeting(name: String) {
             }
 
             ElevatedButton(
-                onClick = {  expanded = !expanded }
+                onClick = {  expanded.value = !expanded.value }
             ) {
                 Text(
-                    text = if (expanded) "Show less" else "Show more",
+                    text = if (expanded.value) "Show less" else "Show more",
 
                 )
             }
