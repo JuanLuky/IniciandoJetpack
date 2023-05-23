@@ -58,7 +58,7 @@ fun MyApp(
 @Composable
 private fun Greeting(name: String) {
 
-    var expanded = remember {
+    val expanded = remember {
         mutableStateOf(false)
     }
 
